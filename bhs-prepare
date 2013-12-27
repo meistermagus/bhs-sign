@@ -1,0 +1,47 @@
+#!/bin/bash
+# bhs-prepare script
+# part of
+# bhs-sign Version 1 27.12.2013 oli@mad-fx.de
+# This scripts downloads videos and images from ftp and writes list for the bhs-sign slideshow more infos in your .xinit script
+
+DIR=/home/pi/slideshow
+LISTS=/home/pi/lists
+naptime=3
+
+#FTP Settings
+USER=
+HOST=
+PASS=
+SCREEN=test   #1, 2 oder test, this is a diretory on the ftp server
+
+rm $LISTS/*	#delete the old lists
+rm $DIR/* 	#delete old files
+
+wget ftp://"$USER"@"$HOST"/"$SCREEN"/* --password="$PASS"
+# get the new files from ftp
+
+
+#lets make a list
+index=1
+for file in $(ls -1x)
+do
+	EXTENSION=`echo "$file" | cut -d'.' -f2` # get the extension
+	case "$EXTENSION"
+		in
+		jpg|JPG|gif|GIF|png|PNG|tif|TIF|tiff|TIFF) #Images
+					echo $file >> $LISTS/$index-image
+					;;
+					
+		mp4|MP4|avi|AVI|mkv|MKV|mpg|MPG) 	#Videos
+					let index++
+					echo $file >> $LISTS/$index-video
+					let index++
+					;;
+	
+		*) 			echo "No valid files found..." 
+					;;
+	esac
+done
+logger BHS "List(s) finished."
+
+
