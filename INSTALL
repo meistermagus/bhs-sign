@@ -1,0 +1,11 @@
+INSTALL
+
+copy .xinit and bhs-prepare in your users home dir
+edit the ftp server settings in bhs-prepare
+make subdirs "slideshow" and "lists"
+install feh and omxplayer (e.g. apt-get install feh omyplayer)
+make sure X is running properly
+
+enjoy!
+
+
