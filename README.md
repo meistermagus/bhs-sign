@@ -11,7 +11,7 @@ The number of screens is only limited by the names of subdirs you can think of
 
 Features:
 -Downloads images and videos from a FTP server
--Precesses the into slideshow lists (I know, its dirty!)
+-Processes them into slideshow lists (I know, its dirty!)
 -Runs an endless slideshow
 
 Requirements: 
@@ -26,6 +26,6 @@ TODO:
 *download also checks for a new script version on server
 *DEBUG variable switches on log output
 *Clean it all up!
-*make it all happen under one roof (one player!) with the abilities for tickers(rss) and a clock
+*make it all happen under one roof (one player!) with the abilities for news tickers(rss) and a clock
 
 
